@@ -16,4 +16,10 @@ public class CarController : MonoBehaviour
     {
         carPhysics.movementDirection = value.Get<Vector2>();
     }
+
+    public void OnReset(InputValue _)
+    {
+        transform.Translate(0, 10, 0);
+        transform.rotation = Quaternion.identity;
+    }
 }
