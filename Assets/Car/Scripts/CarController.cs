@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,5 +22,9 @@ public class CarController : MonoBehaviour
     {
         transform.Translate(0, 10, 0);
         transform.rotation = Quaternion.identity;
+    }
+
+    public void OnCustomerInteraction(InputValue _) 
+    {
     }
 }
