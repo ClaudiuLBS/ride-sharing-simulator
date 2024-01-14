@@ -7,7 +7,7 @@ public class CarController : MonoBehaviour
 {
     CarPhysics carPhysics;
     public bool isNearCustomer = false;
-    public TextMeshProUGUI helpText;
+    public static TextMeshProUGUI helpText;
 
     public static event Action onCustomerPickup;
     public static event Action onCustomerDeliver;
@@ -42,6 +42,7 @@ public class CarController : MonoBehaviour
         isNearCustomer = true;
         helpText.text = $"Press E";
     }
+
     private void OnTriggerExit(Collider other)
     {
         isNearCustomer = false;
