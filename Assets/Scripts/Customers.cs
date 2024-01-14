@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +9,16 @@ public class Customers : MonoBehaviour
     public Transform finishingPoint;
     public GameObject currentCustomer;
 
-    
+    private void OnEnable()
+    {
+        CarController.onCustomerPickup += PickUpCustomer;
+    }
+
+    private void OnDisable()
+    {
+        CarController.onCustomerPickup -= PickUpCustomer;
+    }
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -36,5 +44,4 @@ public class Customers : MonoBehaviour
         startingPoint = null;
         currentCustomer.transform.position = new Vector3(0, -10000, 0);
     }
-
 }

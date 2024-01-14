@@ -1,12 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
     CarPhysics carPhysics;
+    public bool isNearCustomer = false;
+    public TextMeshProUGUI helpText;
+
+    public static event Action onCustomerPickup;
 
     private void Awake()
     {
@@ -24,7 +27,21 @@ public class CarController : MonoBehaviour
         transform.rotation = Quaternion.identity;
     }
 
+
     public void OnCustomerInteraction(InputValue _) 
     {
+        print("Pressed button");
+        if (isNearCustomer)
+            onCustomerPickup?.Invoke();
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        isNearCustomer = true;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        isNearCustomer = false;
     }
 }
