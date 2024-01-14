@@ -7,7 +7,7 @@ public class CarController : MonoBehaviour
 {
     CarPhysics carPhysics;
     public bool isNearCustomer = false;
-    public static TextMeshProUGUI helpText;
+    public TextMeshProUGUI helpText;
 
     public static event Action onCustomerPickup;
     public static event Action onCustomerDeliver;
@@ -33,7 +33,10 @@ public class CarController : MonoBehaviour
     {
         print("Pressed button");
         if (isNearCustomer)
+        {
+            helpText.text = "";
             onCustomerPickup?.Invoke();
+        }
     }
 
 

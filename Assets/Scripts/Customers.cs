@@ -42,7 +42,6 @@ public class Customers : MonoBehaviour
 
     public void PickUpCustomer()
     {
-        CarController.helpText.text = "";
         if (startingPoint == null)
         {
             Destroy(finishingPoint.GetComponent<SphereCollider>());
