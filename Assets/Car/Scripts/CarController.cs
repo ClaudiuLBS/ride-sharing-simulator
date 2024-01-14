@@ -10,6 +10,7 @@ public class CarController : MonoBehaviour
     public TextMeshProUGUI helpText;
 
     public static event Action onCustomerPickup;
+    public static event Action onCustomerDeliver;
 
     private void Awake()
     {
@@ -39,9 +40,11 @@ public class CarController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         isNearCustomer = true;
+        helpText.text = $"Press E";
     }
     private void OnTriggerExit(Collider other)
     {
         isNearCustomer = false;
+        helpText.text = "";
     }
 }
