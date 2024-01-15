@@ -45,7 +45,7 @@ public class Customers : MonoBehaviour
 
         currentCustomer.transform.position = startingPoint.position;
         
-        potentialPoints = (int)Vector3.Distance(startingPoint.position, finishingPoint.position);
+        potentialPoints = (int)Vector3.Distance(startingPoint.position, finishingPoint.position);   
     }
 
     public void PickUpCustomer()
@@ -67,5 +67,4 @@ public class Customers : MonoBehaviour
         coll.radius = 4;
         coll.isTrigger = true;
     }
-
 }
