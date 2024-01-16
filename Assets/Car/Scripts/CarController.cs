@@ -8,17 +8,29 @@ public class CarController : MonoBehaviour
     CarPhysics carPhysics;
     public bool isNearCustomer = false;
     public TextMeshProUGUI helpText;
-
+    AudioSource audioSource;
     public static event Action onCustomerPickup;
 
     private void Awake()
     {
         carPhysics = GetComponent<CarPhysics>();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (audioSource.pitch >= 1 && carPhysics.movementDirection.magnitude == 0)
+            audioSource.pitch -= Time.deltaTime;
+
+        else if (audioSource.pitch <= 1.5 && carPhysics.movementDirection.magnitude > 0)
+            audioSource.pitch += Time.deltaTime * 0.1f;
     }
 
     public void OnMove(InputValue value)
     {
         carPhysics.movementDirection = value.Get<Vector2>();
+        if (audioSource.pitch <= 1.5)
+            audioSource.pitch += Time.deltaTime;
     }
 
     public void OnReset(InputValue _)
